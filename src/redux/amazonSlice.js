@@ -55,6 +55,7 @@ import { createSlice } from "@reduxjs/toolkit";
 const initialState = {
   products: [],
   userInfo: [],
+  searchingData:[],
 };
 
  export const amazonSlice = createSlice({
@@ -69,6 +70,16 @@ const initialState = {
         state.products.push(action.payload);
       }
     },
+
+     ShowingData: (state, action) => {
+      const item = state.searchingData.find((item) => item.id === action.payload.id);
+      if (item) {
+        item.quantity += action.payload.quantity;
+      } else {
+        state.searchingData.push(action.payload);
+      }
+    },
+ 
 
     incrementQuantity: (state, action) => {
       const item = state.products.find((item) => item.id === action.payload);
@@ -94,5 +105,5 @@ const initialState = {
   },
 });
 
-export const { addToCart, deleteItem, resetCart, incrementQuantity, decrementQuantity } = amazonSlice.actions;
+export const { addToCart, deleteItem, resetCart, incrementQuantity, decrementQuantity ,ShowingData} = amazonSlice.actions;
 export default amazonSlice.reducer;

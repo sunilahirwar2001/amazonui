@@ -27,11 +27,12 @@ const HeaderBottom = () => {
           <MenuIcon />
           All
         </li>
-        <li className="headerHover">Today's Deals</li>
-        <li className="headerHover">Customer Service</li>
-        <li className="headerHover">Gift Cards</li>
-        <li className="headerHover">Registry</li>
-        <li className="headerHover">Sell</li>
+        <li className="headerHover md:inline-flex ">Today's Deals</li>
+
+        <li className="headerHover md:inline-flex">Customer Service</li>
+        <li className="headerHover md:inline-flex">Gift Cards</li>
+        <li className="headerHover md:inline-flex">Registry</li>
+        <li className="headerHover md:inline-flex">Sell</li>
       </ul>
       {/* ============ ListItems End here ============== */}
       {/* ============ sideNav Start here ============== */}
@@ -42,8 +43,7 @@ const HeaderBottom = () => {
               <div className="w-full bg-amazon_light text-white py-2 px-6 flex items-center gap-4">
                 <AccountCircleIcon />
                 <h3 className="font-titleFont font-bold text-lg tracking-wide">
-                  Hello, Sign In
-                </h3>
+                 </h3> Hello, gffdfdv
               </div>
               <SideNavContent
                 title="Digital Content & Devices"
