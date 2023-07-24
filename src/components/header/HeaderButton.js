@@ -43,7 +43,8 @@ const HeaderBottom = () => {
               <div className="w-full bg-amazon_light text-white py-2 px-6 flex items-center gap-4">
                 <AccountCircleIcon />
                 <h3 className="font-titleFont font-bold text-lg tracking-wide">
-                 </h3> Hello, gffdfdv
+                  Hello, sign In
+                </h3>
               </div>
               <SideNavContent
                 title="Digital Content & Devices"

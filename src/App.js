@@ -1,4 +1,4 @@
-import React from "react";
+import {React, useState} from "react";
 import {
   createBrowserRouter,
   createRoutesFromElements,
@@ -18,22 +18,31 @@ import Address from './components/payment/Address'
 import SearchBar from "./searchbar/SearchBar";
 import ViewProduct from './components/viewproduct/ViewProduct'
 import Logout from "./signin/Logout";
-const Layout =()=>{
-  return (
-    <div>
-      <Header />
-      <ScrollRestoration/>
-      <Outlet />
-      <Footer />
-    </div>
-  )
-}
+
+
 
 function App() {
+  const [searchQuery, setSearchQuery] = useState('');
+
+  const handleSearch = (query) => {
+    setSearchQuery(query);
+    console.log(query);
+  };
+  const Layout =()=>{
+    return (
+      <div>
+        <Header onSearch={handleSearch}/>
+        <ScrollRestoration/>
+        <Outlet />
+        <Footer />
+      </div>
+    )
+  }
+
   const router = createBrowserRouter(
     createRoutesFromElements(
       <Route path="/" element={<Layout />}>
-        <Route index element={<Home />} loader={productsData}></Route>
+      <Route index element={<Home searchQuery={searchQuery} />} loader={productsData}></Route>
      <Route   path="/cart"  element= {<Cart/>} />
      <Route path="/signup" element={<SignUp/>} />
      <Route path="/signin" element={<SignIn/>}/>

@@ -137,7 +137,7 @@ const Cart = () => {
         {products.map((item) => (
           <div key={item.id} className='w-full border-b-[1px] border-b-gray-300 p-4 flex items-center gap-6'>
             <div className='w-1/5'>
-              <img className='w-full h-44 object-contain' src={item.image} alt='ProductImg' />
+              {/* <img className='w-full h-44 object-contain' src={item.image} alt='ProductImg' /> */}
             </div>
             <div>
               <h2 className='font-semibold text-lg'>{item.title}</h2>
@@ -201,7 +201,7 @@ active: from bg-red-400 active:to-red-500 duration-200 py-1 rounded-md mt-3'>Del
     </p>
     </div>
     <Link to ='/payment'>
-        <button className='w-full font-titleFont font-medium text-base bg-gradient-to-tr
+         <button className='w-full font-titleFont font-medium text-base bg-gradient-to-tr
 from-yellow-400 to-yellow-200 border hover:from-yellow-300 hover:to-yellow-
 border-yellow-500 hover:border-yellow-700 active:bg-gradient-to-bl
 active: from bg-yellow-400 active:to-yellow-500 duration-200 py-1 rounded-md mt-3'>Proceed to Buy</button>

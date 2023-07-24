@@ -55,7 +55,6 @@ import { createSlice } from "@reduxjs/toolkit";
 const initialState = {
   products: [],
   userInfo: [],
-  searchingData:[],
 };
 
  export const amazonSlice = createSlice({
@@ -71,14 +70,7 @@ const initialState = {
       }
     },
 
-     ShowingData: (state, action) => {
-      const item = state.searchingData.find((item) => item.id === action.payload.id);
-      if (item) {
-        item.quantity += action.payload.quantity;
-      } else {
-        state.searchingData.push(action.payload);
-      }
-    },
+   
  
 
     incrementQuantity: (state, action) => {
@@ -102,8 +94,13 @@ const initialState = {
     resetCart: (state) => {
       state.products = [];
     },
+    filterSearch: (state, action) => {
+      // Assuming you have a property like "productName" in your products
+      // This action will filter the products based on the search query
+      state.products = state.products.filter(item => item.category.includes(action.payload));
+    },
   },
 });
 
-export const { addToCart, deleteItem, resetCart, incrementQuantity, decrementQuantity ,ShowingData} = amazonSlice.actions;
+export const { addToCart, deleteItem, resetCart, incrementQuantity, decrementQuantity,filterSearch } = amazonSlice.actions;
 export default amazonSlice.reducer;

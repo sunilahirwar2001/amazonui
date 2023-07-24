@@ -6,7 +6,7 @@ import ArrowDropDownOutlinedIcon from "@mui/icons-material/ArrowDropDownOutlined
 import ShoppingCartIcon from "@mui/icons-material/ShoppingCart";
 import SearchIcon from "@mui/icons-material/Search";
 import {logo} from "../../assets/index"
-import {ShowingData} from '../../redux/amazonSlice'
+import {filterSearch} from '../../redux/amazonSlice'
 import HeaderButton from './HeaderButton';
 import { useDispatch, useSelector } from 'react-redux';
 import { Link } from 'react-router-dom';
@@ -14,17 +14,44 @@ import { allItems } from '../../constants';
 import SearchBar from '../../searchbar/SearchBar'
 import {setSearchTerm} from '../../redux/amazonSlice'
 
-const Header = () => {
+const Header = ({ onSearch }) => {
+  const products = useSelector((state) => state.amazonReducer.products);
   const dispatch = useDispatch();
      const [showAll,setShowAll]=useState(false);
      const loginUser = localStorage.getItem('loginUser');
+     const [searchQuery, setSearchQuery] = useState('');
      
      const [username,setUsername]=useState( loginUser );
-    const products = useSelector((state) => state.amazonReducer.products);
-    const dfg = useSelector((state) => state.amazonReducer.searchingData);
-    console.log(products);
+
   
+    //console.log(products);
+    // const handleInputChange = (event) => {
+    //   event.preventDefault();
+    //   const { value } = event.target;
+    //   setSearchQuery(value);
+    //   onSearch(value); // Pass the search query to the parent component
+    // };
    
+  const handleInputChange = (event) => {
+    // event.preventDefault();
+   
+    setSearchQuery(event.target.value);
+    
+     const { value } = event.target;
+      setSearchQuery(value);
+      console.log(value);
+      onSearch(value); // Pass the search query to the parent component
+    //   console.log("hi")
+
+  };
+
+
+  
+  // const handleKeyPress = (event) => {
+  //   if (event.key === 'Enter') {
+  //     handleSearch();
+  //   }
+  // };
   return (
     <div className='w-full sticky top-0 z-50'>
       <div className="w-full bg-amazon_blue text-white px-4 py-3 flex items-center gap-4">
@@ -73,9 +100,17 @@ const Header = () => {
     
          <input
             className="h-full text-base text-amazon_blue flex-grow outline-none border-none px-2"
-            type="text" />
+            type="text"  
+             
+            // onKeyPress={handleKeyPress}
+           //value={searchQuery}
+           onChange={handleInputChange} 
+        
+           
+           /> 
+         
           <span className="w-12 h-full flex items-center justify-center bg-amazon_yellow hover:bg-[#f3a847] duration-300 text-amazon_blue cursor-pointer rounded-tr-md rounded-br-md">
-            <SearchIcon onClick={()=>dispatch(ShowingData())} />
+            <SearchIcon   onClick={()=>dispatch(filterSearch())} />
           </span> 
      
 {/*      

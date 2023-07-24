@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { useLoaderData } from 'react-router-dom'
 import StarIcon from '@mui/icons-material/Star';
 import ShoppingCartIcon from '@mui/icons-material/ShoppingCart';
@@ -10,20 +10,43 @@ import { useDispatch } from 'react-redux';
 import { addToCart } from '../../redux/amazonSlice';
 
 
-const Products = () => {
+const Products = (searchQuery) => {
 
+const  q= searchQuery.searchQuery.searchQuery;
+console.log(q); 
  const dispatch = useDispatch()
 
   const data = useLoaderData();
     // console.log(data.data);
   const productData = data.data;
+
+  
   return (
     <div className='max-w-screen-2xl mx-auto grid grid-cols-4 md:grid-cols-4 gap-10 px-4'>
-      {productData.map((item) => (
+      {/* { 
+      
+       
+      productData.
+      filter((item) => {
+        return q.toLowerCase()==''
+        ? item :
+        item.description.toLowerCase().search(q.toLowerCase())
+
+      }) */}
+
+{ productData
+        .filter((item) => {
+          return q.toLowerCase() === '' // If search query is empty, return all items
+            ? true
+            : item.description.toLowerCase().includes(q.toLowerCase()) || item.title.toLowerCase().includes(q.toLowerCase()) || item.category.toLowerCase().includes(q.toLowerCase()); // Filter based on description
+        })
+      .map((item) => (
         <div key={item.id} 
+
         className='bg-white h-auto border-[1px] border-gray-200 py-8 z-30
         hover:border-transparent shadow-none hover:shadow-testShadow duration-200 relative flex flex-col gap-4'>
             <span className='text-xs capitalize italic top-2 right-2 text-gray-500'>{item.category}</span>
+         
       <div className='w-full h-auto flex items-center justify-center relative group'>
         <img className='w-52 h-64 object-contain ' src={item.image} alt='ProductImg' />
       
