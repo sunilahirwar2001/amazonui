@@ -2,12 +2,11 @@ import React from 'react';
 import { useNavigate } from 'react-router-dom';
 import GooglePayButton from '@google-pay/button-react';
 import { useSelector } from 'react-redux';
-
+import { Link } from 'react-router-dom';
 const Address = () => {
   const navigate = useNavigate();
-
   const handleSubmit = () => {
-    alert('You have purchased this item');
+    
   };
 
   return (
@@ -22,7 +21,7 @@ const Address = () => {
             required
             type="email"
             placeholder="Enter Your Email Address"
-            className="w-full px-4 py-2 border rounded-md focus:outline-none focus:ring focus:border-blue-300"
+            className=" px-4 py-2 border rounded-md focus:outline-none focus:ring focus:border-blue-300"
           />
         </div>
         <div className="mb-4">
@@ -33,7 +32,7 @@ const Address = () => {
             required
             type="text"
             placeholder="Enter Your Mobile"
-            className="w-full px-4 py-2 border rounded-md focus:outline-none focus:ring focus:border-blue-300"
+            className=" px-4 py-2 border rounded-md focus:outline-none focus:ring focus:border-blue-300"
           />
         </div>
         <div className="mb-4">
@@ -44,7 +43,7 @@ const Address = () => {
             required
             type="text"
             placeholder="Enter Street"
-            className="w-full px-4 py-2 border rounded-md focus:outline-none focus:ring focus:border-blue-300"
+            className=" px-4 py-2 border rounded-md focus:outline-none focus:ring focus:border-blue-300"
           />
         </div>
         <div className="mb-4">
@@ -55,7 +54,7 @@ const Address = () => {
             required
             type="text"
             placeholder="Enter Village/ Society"
-            className="w-full px-4 py-2 border rounded-md focus:outline-none focus:ring focus:border-blue-300"
+            className=" px-4 py-2 border rounded-md focus:outline-none focus:ring focus:border-blue-300"
           />
         </div>
         <div className="mb-4">
@@ -67,7 +66,7 @@ const Address = () => {
             maxLength="6"
             type="text"
             placeholder="Enter Pin Code"
-            className="w-full px-4 py-2 border rounded-md focus:outline-none focus:ring focus:border-blue-300"
+            className=" px-4 py-2 border rounded-md focus:outline-none focus:ring focus:border-blue-300"
           />
         </div>
         <div className="mb-4">
@@ -78,7 +77,7 @@ const Address = () => {
             maxLength="6"
             type="text"
             placeholder="Enter District"
-            className="w-full px-4 py-2 border rounded-md focus:outline-none focus:ring focus:border-blue-300"
+            className=" px-4 py-2 border rounded-md focus:outline-none focus:ring focus:border-blue-300"
           />
         </div>
         <div className="mb-4">
@@ -90,7 +89,7 @@ const Address = () => {
             maxLength="6"
             type="text"
             placeholder="Enter State"
-            className="w-full px-4 py-2 border rounded-md focus:outline-none focus:ring focus:border-blue-300"
+            className=" px-4 py-2 border rounded-md focus:outline-none focus:ring focus:border-blue-300"
           />
         </div>
         <div className="mb-4">
@@ -103,7 +102,7 @@ const Address = () => {
             maxLength='16'
             placeholder="Enter Card Number"
             inputmode="numeric" // to show numeric keyboard on mobile devices
-            className="w-full px-4 py-2 border rounded-md focus:outline-none focus:ring focus:border-blue-300"
+            className=" px-4 py-2 border rounded-md focus:outline-none focus:ring focus:border-blue-300"
           />
         </div>
 
@@ -117,12 +116,14 @@ const Address = () => {
             Cancel Payment
           </button>
 
+         <Link to='/purchased'>
           <button
             type="submit"
             className="px-6 py-2 bg-blue-500 text-white rounded-md hover:bg-blue-600 focus:outline-none focus:ring focus:border-blue-300"
           >
             Payment
           </button>
+          </Link>
         </div>
       </form>
     </section>

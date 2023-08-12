@@ -4,7 +4,7 @@ import {motion} from "framer-motion"
 import CloseIcon from "@mui/icons-material/Close";
 import AccountCircleIcon from "@mui/icons-material/AccountCircle";
 import SideNavContent from './SideNavContent';
-
+import { Link } from 'react-router-dom';
 
 const HeaderBottom = () => {
     const ref=useRef();
@@ -17,7 +17,7 @@ const HeaderBottom = () => {
         })
     },[ref,sidebar])
   return (
-    <div className="w-full px-4 h-[36px] bg-amazon_light text-white flex items-center">
+    <div className=" px-4 h-[36px] bg-amazon_light text-white flex items-center">
       {/* ============ ListItems Start here ============ */}
       <ul className="flex items-center gap-2 text-sm tracking-wide">
         <li
@@ -27,20 +27,23 @@ const HeaderBottom = () => {
           <MenuIcon />
           All
         </li>
-        <li className="headerHover md:inline-flex ">Today's Deals</li>
 
-        <li className="headerHover md:inline-flex">Customer Service</li>
-        <li className="headerHover md:inline-flex">Gift Cards</li>
-        <li className="headerHover md:inline-flex">Registry</li>
+ <Link to='/todaydeals'>     <li className="headerHover md:inline-flex ">Today's Deals</li></Link> 
+
+     <Link to='/customer'>  <li className="headerHover md:inline-flex">Customer Service</li> </Link> 
+        
+        
+     <Link to='/giftcards'><li className="headerHover md:inline-flex">Gift Cards</li></Link>  
+   <Link to='/registry'>   <li className="headerHover md:inline-flex">Registry</li></Link>  
         <li className="headerHover md:inline-flex">Sell</li>
       </ul>
       {/* ============ ListItems End here ============== */}
       {/* ============ sideNav Start here ============== */}
       {sidebar && (
-        <div className="w-full h-screen text-black fixed top-0 left-0 bg-amazon_blue bg-opacity-50">
-          <div className="w-full h-full relative">
+        <div className=" h-screen text-black fixed top-0 left-0 bg-amazon_blue bg-opacity-50">
+          <div className=" h-full relative">
             <motion.div ref={ref} initial={{x:-500,opacity:0}} animate={{x:0, opacity:1}} transition={{duration:.5}} className="w-[350px] h-full bg-white border border-black">
-              <div className="w-full bg-amazon_light text-white py-2 px-6 flex items-center gap-4">
+              <div className=" bg-amazon_light text-white py-2 px-6 flex items-center gap-4">
                 <AccountCircleIcon />
                 <h3 className="font-titleFont font-bold text-lg tracking-wide">
                   Hello, sign In

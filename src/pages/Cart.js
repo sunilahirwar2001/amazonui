@@ -89,10 +89,10 @@ import { Link } from 'react-router-dom';
 import { emptyCart } from '../assets/index';
 const Cart = () => {
 
-  const dispatch = useDispatch();
-  const products = useSelector((state) => state.amazonReducer.products);
-  const [totalPrice, setTotalPrice] = useState('');
-
+    const dispatch = useDispatch();
+   const products = useSelector((state) => state.amazonReducer.products);
+     const [totalPrice, setTotalPrice] = useState('');
+console.log(products);
   useEffect(() => {
     let Total = 0;
     products.forEach((item) => {
@@ -136,9 +136,11 @@ const Cart = () => {
       <div>
         {products.map((item) => (
           <div key={item.id} className='w-full border-b-[1px] border-b-gray-300 p-4 flex items-center gap-6'>
-            <div className='w-1/5'>
-              {/* <img className='w-full h-44 object-contain' src={item.image} alt='ProductImg' /> */}
-            </div>
+            <div className='w-full'>
+              {/* <img className='w-full h-44 object-contain' src={item.thumbnail} alt='ProductImg' /> */}
+              <img className='w-full h-44 object-contain' src={item.image} alt='ProductImg' />
+             
+            </div> 
             <div>
               <h2 className='font-semibold text-lg'>{item.title}</h2>
               <p className='pr-10 text-sm'>{item.description.substring(0,100)}</p>
@@ -167,7 +169,7 @@ border-red-1000 hover:border-red-700 active:bg-gradient-to-bl
 active: from bg-red-400 active:to-red-500 duration-200 py-1 rounded-md mt-3'>Delete Item</button>
             </div>
             <div>
-      <p  className='text-lg font-titleFont font-semibold'    >{item.price*item.quantity}</p>
+      <p  className='text-lg font-titleFont font-semibold'    >{item.price*item.quantity.toFixed(3)}</p>
             </div>
           </div>
         

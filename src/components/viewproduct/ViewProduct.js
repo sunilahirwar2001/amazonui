@@ -86,7 +86,7 @@ const ViewProduct = ({ data }) => {
 
   return (
     <section className="flex flex-col justify-center items-center p-4 bg-gray-100">
-      <section className="w-full max-w-xl bg-white p-4 rounded-lg shadow-md">
+      <section className=" max-w-xl bg-white p-4 rounded-lg shadow-md">
         <section className="text-center font-bold text-xl mb-4">Flipkart SmartBuy</section>
         <h3 className="text-xl font-bold mb-2">{data?.title}</h3>
         <section className="text-center font-semibold text-blue-600 mb-4">Special offer</section>
@@ -117,10 +117,10 @@ const ViewProduct = ({ data }) => {
           </p>
           {/* Add other offer descriptions here */}
         </section>
-        <section className="w-full mb-4">
+        <section className=" mb-4">
           <div className="flex items-center">
             <input
-              className="w-full px-4 py-2 rounded-md border border-gray-300 focus:outline-none"
+              className=" px-4 py-2 rounded-md border border-gray-300 focus:outline-none"
               type="text"
               placeholder="Enter Delivery Pincode"
             />

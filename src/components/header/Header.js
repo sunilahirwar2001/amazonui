@@ -17,13 +17,15 @@ import {setSearchTerm} from '../../redux/amazonSlice'
 const Header = ({ onSearch }) => {
   const products = useSelector((state) => state.amazonReducer.products);
   const dispatch = useDispatch();
+
      const [showAll,setShowAll]=useState(false);
      const loginUser = localStorage.getItem('loginUser');
      const [searchQuery, setSearchQuery] = useState('');
      
      const [username,setUsername]=useState( loginUser );
+      
+     const [filterData,setFilterData] = useState([]);
 
-  
     //console.log(products);
     // const handleInputChange = (event) => {
     //   event.preventDefault();
@@ -52,9 +54,13 @@ const Header = ({ onSearch }) => {
   //     handleSearch();
   //   }
   // };
+ 
+
+
+
   return (
-    <div className='w-full sticky top-0 z-50'>
-      <div className="w-full bg-amazon_blue text-white px-4 py-3 flex items-center gap-4">
+    <div className='sticky top-0 z-50'>
+      <div className="bg-amazon_blue text-white px-4 py-3 flex items-center gap-4">
         {/* ============ Image Start here ================ */}
        
        <Link to='/'>
@@ -104,13 +110,12 @@ const Header = ({ onSearch }) => {
              
             // onKeyPress={handleKeyPress}
            //value={searchQuery}
-           onChange={handleInputChange} 
-        
-           
+            onChange={handleInputChange} 
+          
            /> 
          
           <span className="w-12 h-full flex items-center justify-center bg-amazon_yellow hover:bg-[#f3a847] duration-300 text-amazon_blue cursor-pointer rounded-tr-md rounded-br-md">
-            <SearchIcon   onClick={()=>dispatch(filterSearch())} />
+            <SearchIcon   />
           </span> 
      
 {/*      

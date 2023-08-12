@@ -6,7 +6,7 @@ const Home = (searchQuery) => {
   return (
     <div>
       <Banner/>
-      <div className='w-full -mt-10 xl:-mt-22 m-36 py-10 '>
+      <div className=' -mt-10 xl:-mt-22 m-36 py-10 '>
     <Products searchQuery={searchQuery}/>
     </div>
     </div>
