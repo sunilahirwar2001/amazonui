@@ -11,16 +11,21 @@ import HeaderButton from './HeaderButton';
 import { useDispatch, useSelector } from 'react-redux';
 import { Link } from 'react-router-dom';
 import { allItems } from '../../constants';
-import SearchBar from '../../searchbar/SearchBar'
-import {setSearchTerm} from '../../redux/amazonSlice'
+import { setSearchQuery } from '../../redux/searchSlice';
+
 
 const Header = ({ onSearch }) => {
   const products = useSelector((state) => state.amazonReducer.products);
   const dispatch = useDispatch();
+  const [query, setQuery] = useState('');
+  // const [searchCategory, setSearchCategory] = useState('');
 
+  // const handleSearch = () => {
+  //   dispatch(filterSearch(searchCategory));
+  // };
      const [showAll,setShowAll]=useState(false);
      const loginUser = localStorage.getItem('loginUser');
-     const [searchQuery, setSearchQuery] = useState('');
+     //const [searchQuery, setSearchQuery] = useState('');
      
      const [username,setUsername]=useState( loginUser );
       
@@ -34,19 +39,22 @@ const Header = ({ onSearch }) => {
     //   onSearch(value); // Pass the search query to the parent component
     // };
    
-  const handleInputChange = (event) => {
-    // event.preventDefault();
+  // const handleInputChange = (event) => {
+  //   // event.preventDefault();
    
-    setSearchQuery(event.target.value);
+  //   setSearchQuery(event.target.value);
     
-     const { value } = event.target;
-      setSearchQuery(value);
-      console.log(value);
-      onSearch(value); // Pass the search query to the parent component
-    //   console.log("hi")
+  //    const { value } = event.target;
+  //     setSearchQuery(value);
+  //     console.log(value);
+  //     onSearch(value); // Pass the search query to the parent component
+  //   //   console.log("hi")
 
+  // };
+  const handleSearch = (e) => {
+    e.preventDefault();
+    dispatch(setSearchQuery(query));
   };
-
 
   
   // const handleKeyPress = (event) => {
@@ -103,20 +111,45 @@ const Header = ({ onSearch }) => {
               </ul>
             </div>
           )}
+
+
+        <input
+          type="text"
+          className="h-full text-base text-amazon_blue flex-grow outline-none border-none px-2"
+          value={query}
+          onChange={(e) => setQuery(e.target.value)}
+          placeholder="Search products..."
+        /> 
+          <button className='w-9' type='submit' onClick={handleSearch}><SearchIcon/></button>
+       
+     
     
-         <input
+         {/* <input
             className="h-full text-base text-amazon_blue flex-grow outline-none border-none px-2"
             type="text"  
              
             // onKeyPress={handleKeyPress}
            //value={searchQuery}
-            onChange={handleInputChange} 
+             onChange={handleInputChange} 
+//value={searchCategory} onChange={(e) => setSearchCategory(e.target.value)}
+               
           
-           /> 
-         
+           />  */}
+{/*          
           <span className="w-12 h-full flex items-center justify-center bg-amazon_yellow hover:bg-[#f3a847] duration-300 text-amazon_blue cursor-pointer rounded-tr-md rounded-br-md">
-            <SearchIcon   />
-          </span> 
+            <SearchIcon 
+             onClick={()=>dispatch(filterSearch({
+              id:item.id,
+              title:item.title,
+              description:item.description,
+              price:item.price,
+              image:item.thumbnail,
+    
+            
+    
+             }))}
+         />
+          </span>  */}
      
 {/*      
       <SearchBar/>  */}
