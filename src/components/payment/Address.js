@@ -3,15 +3,16 @@ import { useNavigate } from 'react-router-dom';
 import GooglePayButton from '@google-pay/button-react';
 import { useSelector } from 'react-redux';
 import { Link } from 'react-router-dom';
-const Address = () => {
+  const Address = () => {
   const navigate = useNavigate();
   const handleSubmit = () => {
-    
+      navigate ("/purchased")
+    alert("Paymnet successfull")
   };
 
-  return (
+    return (
     <section className="max-w-md mx-auto mt-10 p-6 bg-white rounded-lg shadow-md">
-      <form action="post" onSubmit={handleSubmit}>
+      <form  onSubmit={handleSubmit}>
         <h2 className="text-2xl font-bold mb-4">Shipping Details</h2>
         <div className="mb-4">
           <label htmlFor="email" className="block mb-1">
@@ -116,14 +117,13 @@ const Address = () => {
             Cancel Payment
           </button>
 
-         <Link to='/purchased'>
-          <button
+       
+          <button 
             type="submit"
-            className="px-6 py-2 bg-blue-500 text-white rounded-md hover:bg-blue-600 focus:outline-none focus:ring focus:border-blue-300"
-          >
+            className="px-6 py-2 bg-blue-500 text-white rounded-md hover:bg-blue-600 focus:outline-none focus:ring focus:border-blue-300">
             Payment
-          </button>
-          </Link>
+             {/* {handleSubmit ? null : <Link to="/"><img src=" https://c8.alamy.com/comp/2JAHHK1/payment-completed-on-the-screen-as-symbol-of-online-transaction-2JAHHK1.jpg" /></Link>} */}
+      </button>
         </div>
       </form>
     </section>

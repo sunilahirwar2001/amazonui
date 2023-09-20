@@ -67,12 +67,15 @@ const Header = ({ onSearch }) => {
 
 
   return (
-    <div className='sticky top-0 z-50'>
-      <div className="bg-amazon_blue text-white px-4 py-3 flex items-center gap-4">
+    // <div className='sticky top-0 z-50'>
+    <div className='w-full sticky top-0 z-50'>
+      {/* <div className="bg-amazon_blue  text-white px-4 py-3 flex items-center gap-4"> */}
+      <div className="w-full bg-amazon_blue  text-white px-4 py-3 flex items-center gap-4">
+
         {/* ============ Image Start here ================ */}
        
        <Link to='/'>
-        <div className="headerHover  hidden mdl:inline-flex">
+        <div className="headerHover">
           <img className="w-24 mt-2" src={logo} alt="logo" />
         </div>
         </Link>
@@ -115,11 +118,13 @@ const Header = ({ onSearch }) => {
 
         <input
           type="text"
-          className="h-full text-base text-amazon_blue flex-grow outline-none border-none px-2"
+          className="h-full text-base md:align-middle   mdl:align-middle text-amazon_blue flex-grow outline-none border-none px-2"
           value={query}
           onChange={(e) => setQuery(e.target.value)}
           placeholder="Search products..."
         /> 
+
+
           <button className='w-9' type='submit' onClick={handleSearch}><SearchIcon/></button>
        
      
@@ -160,7 +165,7 @@ const Header = ({ onSearch }) => {
 
         <div className="flex flex-col items-start justify-center headerHover">
         <Link to='/signin'>
-       <p className="text-sm mdl:text-xs text-white text-lightText font-light">Hello, {username ? username : ( <Link to='/signin'>Sign In</Link> )} </p>
+       <p className="text-xs mdl:text-xs text-white text-lightText font-light">Hello, {username ? username : ( <Link to='/signin'>Sign In</Link> )} </p>
        </Link>
           <p className="text-sm font-semibold -mt-1 text-whiteText hidden md:inline-flex">
             Accounts & Lists{" "}
